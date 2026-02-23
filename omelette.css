@@ -1,0 +1,124 @@
+.card {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 12px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+img{
+  width: 100%;
+  border-radius: 12px; 
+}
+
+body {
+  background-color: rgb(244, 230, 217);
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+}
+
+.preparation{
+  background-color: rgb(255, 247, 252);
+  padding: 10px;
+  border-radius: 15px;
+  padding-left: 30px;
+}
+
+h3{
+  color: rgb(77, 0, 27);  
+  font-family: 'Inter', serif;
+}
+
+ul{
+  padding: 10px;
+}
+
+li{
+  padding-left: 10px;
+}
+
+.ingredient{
+  border-bottom: 1px solid rgb(181, 170, 131);
+  padding-left: 10px;
+}
+
+.ingredient li::marker{
+  color: rgb(157, 116, 101);
+}
+
+.preparation li::marker{
+  color: rgb(77, 0, 27);
+}
+
+h2{
+  color: rgb(131, 70, 51); 
+  font-family: 'Inter', serif;
+}
+
+h1{
+  font-family: 'Inter', serif;
+}
+
+.instruction ::marker{
+  color: rgb(73, 63, 29);
+}
+
+.instruction{
+     border-bottom: 1px solid rgb(181, 170, 131);   
+   
+}
+
+ .nutrition-table {
+  width: 100%;
+  border-collapse: collapse; /* Supprime les doubles bordures */
+} 
+
+.nutrition-table  tr{
+  border-bottom: 1px solid #a07849; /* Crée la ligne grise sous chaque ligne */
+}
+
+.nutrition-table tr:last-child {
+  border-bottom: none; /* Enlève la ligne pour le dernier élément */
+}
+
+.nutrition-table td {
+  padding: 12px 20px; /* Ajoute de l'espace à l'intérieur des cellules */
+  color: #5f5f5f; /* Couleur de texte pour les labels */
+}
+
+.nutrition-table td.value {
+  font-weight: bold; /* Met les chiffres en gras */
+ color: rgb(131, 70, 51);
+}
+
+@media screen and (max-width: 600px)  {
+    body {
+        display: flex;
+        flex-direction: column;
+        background-color:none;
+        margin: 0;
+        padding: 0;
+      
+    }
+     img{
+        width: 100%;
+        border-radius: 0px;
+    }
+    .card {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        padding: 0px;
+          border-radius: 0px;
+    }
+    .container{
+        padding:10px;
+    }
+    .ingredient{
+        border-bottom: 1px solid rgb(181, 170, 131);
+        padding-left: 15px;
+    }
+  }
