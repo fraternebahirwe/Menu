@@ -1,3 +1,19 @@
+/* Custom Properties (Variables) pour une maintenance simplifiée */
+:root {
+  --color-brand-primary: #854632;
+  --color-brand-secondary: #7b284f;
+  --color-bg-body: #f3e5d8;
+  --color-bg-card: #ffffff;
+  --color-bg-prep: #fff7fc;
+  --color-text-dark: #302d2c;
+  --color-text-muted: #5f574e;
+  --color-border: #e4ded8;
+  
+  --font-sans: Arial, sans-serif;
+  --font-serif: Georgia, serif;
+}
+
+/* Reset global moderne */
 * {
   margin: 0;
   padding: 0;
@@ -5,95 +21,116 @@
 }
 
 body {
-  background-color: #f3e5d8;
-  color: #302d2c;
-  font-family: Arial, sans-serif;
+  background-color: var(--color-bg-body);
+  color: var(--color-text-dark);
+  font-family: var(--font-sans);
   min-height: 100vh;
-  padding: 80px 24px;
+  /* Utilisation de Flexbox pour centrer parfaitement la carte verticalement et horizontalement */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1.5rem;
 }
 
-.card {
-  max-width: 740px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 40px;
-  border-radius: 24px;
+/* Ciblage du tag <main> optimisé */
+main.card {
+  max-width: 46.25rem; /* 740px */
+  width: 100%;
+  background-color: var(--color-bg-card);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
 }
 
 img {
   width: 100%;
+  height: auto;
   display: block;
-  border-radius: 16px;
-  margin-bottom: 32px;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.container {
+  /* Supprimé le padding mobile-only d'ici pour le centraliser proprement sur la carte */
+  width: 100%;
 }
 
 h1 {
-  font-family: Georgia, serif;
-  font-size: 42px;
-  margin-bottom: 20px;
-  color: #302d2c;
+  font-family: var(--font-serif);
+  font-size: 2.5rem; /* ~40px */
+  margin-bottom: 1.25rem;
+  color: var(--color-text-dark);
+  line-height: 1.1;
 }
 
 h2 {
-  font-family: Georgia, serif;
-  font-size: 30px;
-  color: #854632;
-  margin-bottom: 20px;
+  font-family: var(--font-serif);
+  font-size: 1.75rem; /* ~28px */
+  color: var(--color-brand-primary);
+  margin-bottom: 1.25rem;
 }
 
 h3 {
-  color: #7b284f;
-  margin-bottom: 12px;
+  color: var(--color-brand-secondary);
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
 }
 
 p {
   line-height: 1.7;
-  color: #5f574e;
-  margin-bottom: 28px;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
 }
 
-.preparation {
-  background-color: #fff7fc;
-  padding: 28px;
-  border-radius: 16px;
-  margin-bottom: 32px;
+/* Ciblage sémantique par balise <section> */
+section.preparation {
+  background-color: var(--color-bg-prep);
+  padding: 1.75rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
 }
 
-.ingredient,
-.instruction {
-  border-bottom: 1px solid #e4ded8;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+section.ingredient,
+section.instruction {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.875rem;
+  margin-bottom: 1.875rem;
 }
 
 ul,
 ol {
-  padding-left: 24px;
+  padding-left: 1.25rem;
 }
 
 li {
-  padding-left: 14px;
-  margin-bottom: 14px;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem; /* Réduit pour éviter un trop grand espacement vertical */
   line-height: 1.6;
-  color: #5f574e;
+  color: var(--color-text-muted);
 }
 
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* Gestion élégante des puces */
 li::marker {
-  color: #854632;
+  color: var(--color-brand-primary);
   font-weight: bold;
 }
 
-.preparation li::marker {
-  color: #7b284f;
+section.preparation li::marker {
+  color: var(--color-brand-secondary);
 }
 
+/* Tableaux nutritionnels */
 .nutrition-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 1rem;
 }
 
 .nutrition-table tr {
-  border-bottom: 1px solid #e4ded8;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nutrition-table tr:last-child {
@@ -101,49 +138,48 @@ li::marker {
 }
 
 .nutrition-table td {
-  padding: 16px 32px;
-  color: #5f574e;
+  padding: 0.75rem 2rem; /* Réduction du padding vertical excessif */
+  color: var(--color-text-muted);
+  width: 50%; /* Aligne parfaitement les deux colonnes à 50% chacune */
 }
 
 .nutrition-table .value {
-  color: #854632;
+  color: var(--color-brand-primary);
   font-weight: 700;
 }
 
-/* Mobile */
-@media screen and (max-width: 600px) {
+
+/* Version Mobile (Responsive) */
+@media screen and (max-width: 650px) {
   body {
     padding: 0;
+    align-items: flex-start; /* Évite un rendu bizarre si l'écran est très court */
   }
 
-  .card {
-    width: 100%;
-    padding: 0;
+  main.card {
     border-radius: 0;
+    padding: 0 0 2.5rem 0; /* Pas de padding sur les côtés pour laisser l'image coller aux bords */
   }
 
   img {
     border-radius: 0;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 
+  /* Le container gère le décalage du texte uniquement sur mobile */
   .container {
-    padding: 0 32px 40px;
+    padding: 0 1.5rem; 
   }
 
   h1 {
-    font-size: 34px;
+    font-size: 2.25rem;
   }
 
   h2 {
-    font-size: 26px;
-  }
-
-  .preparation {
-    padding: 24px;
+    font-size: 1.5rem;
   }
 
   .nutrition-table td {
-    padding: 16px 20px;
+    padding: 0.75rem 1rem;
   }
 }
