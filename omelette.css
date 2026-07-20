@@ -1,19 +1,22 @@
-/* Custom Properties (Variables) pour une maintenance simplifiée */
+/* Palette de couleurs "Pop & Gourmande" */
 :root {
-  --color-brand-primary: #854632;
-  --color-brand-secondary: #7b284f;
-  --color-bg-body: #f3e5d8;
-  --color-bg-card: #ffffff;
-  --color-bg-prep: #fff7fc;
-  --color-text-dark: #302d2c;
-  --color-text-muted: #5f574e;
-  --color-border: #e4ded8;
+  --gradient-bg: linear-gradient(135deg, #fef9e7 0%, #fbe7e9 100%);
+  --gradient-card: linear-gradient(to bottom, #ffffff, #fffdf9);
   
-  --font-sans: Arial, sans-serif;
-  --font-serif: Georgia, serif;
+  --color-accent-yellow: #ffc107; /* Jaune œuf vibrant */
+  --color-accent-pink: #ff477e;   /* Rose baie / préparation */
+  --color-accent-green: #2ec4b6;  /* Vert herbes fraîches */
+  --color-accent-purple: #7209b7; /* Violet pop pour les titres */
+  
+  --color-text-main: #2b2d42;
+  --color-text-muted: #4a4e69;
+  --color-border: #f0e6df;
+  
+  --font-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Fredoka One', Georgia, serif; /* Look arrondi et unique */
 }
 
-/* Reset global moderne */
+/* Reset global */
 * {
   margin: 0;
   padding: 0;
@@ -21,165 +24,221 @@
 }
 
 body {
-  background-color: var(--color-bg-body);
-  color: var(--color-text-dark);
+  background: var(--gradient-bg);
+  color: var(--color-text-main);
   font-family: var(--font-sans);
   min-height: 100vh;
-  /* Utilisation de Flexbox pour centrer parfaitement la carte verticalement et horizontalement */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 4rem 1.5rem;
 }
 
-/* Ciblage du tag <main> optimisé */
+/* Carte principale avec ombre magique */
 main.card {
-  max-width: 46.25rem; /* 740px */
+  max-width: 740px;
   width: 100%;
-  background-color: var(--color-bg-card);
+  background: var(--gradient-card);
   padding: 2.5rem;
-  border-radius: 1.5rem;
+  border-radius: 30px; /* Bords plus arrondis pour un effet cartoon/moderne */
+  box-shadow: 0 20px 40px rgba(255, 71, 126, 0.12), 
+              0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+/* Effet interactif au survol de la carte */
+main.card:hover {
+  transform: translateY(-5px);
 }
 
 img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-.container {
-  /* Supprimé le padding mobile-only d'ici pour le centraliser proprement sur la carte */
-  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 4px solid #ffffff; /* Cadre blanc style photo Polaroïd */
 }
 
 h1 {
   font-family: var(--font-serif);
-  font-size: 2.5rem; /* ~40px */
+  font-size: 2.75rem;
   margin-bottom: 1.25rem;
-  color: var(--color-text-dark);
-  line-height: 1.1;
-}
-
-h2 {
-  font-family: var(--font-serif);
-  font-size: 1.75rem; /* ~28px */
-  color: var(--color-brand-primary);
-  margin-bottom: 1.25rem;
-}
-
-h3 {
-  color: var(--color-brand-secondary);
-  margin-bottom: 0.75rem;
-  font-size: 1.25rem;
+  color: var(--color-accent-purple);
+  line-height: 1.2;
 }
 
 p {
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--color-text-muted);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
 }
 
-/* Ciblage sémantique par balise <section> */
+/* Section Préparation : Ambiance Rose Éclatante */
 section.preparation {
-  background-color: var(--color-bg-prep);
-  padding: 1.75rem;
-  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe3ec 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  margin-bottom: 2.5rem;
+  border-left: 6px solid var(--color-accent-pink);
+}
+
+section.preparation h3 {
+  color: var(--color-accent-pink);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section Ingrédients : Ambiance Jaune Œuf */
+section.ingredient {
+  border-bottom: 2px dashed var(--color-border);
+  padding-bottom: 2rem;
   margin-bottom: 2rem;
 }
 
-section.ingredient,
-section.instruction {
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 1.875rem;
-  margin-bottom: 1.875rem;
+section.ingredient h2 {
+  color: #e69500;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
 }
 
-ul,
-ol {
-  padding-left: 1.25rem;
+/* Section Instructions : Ambiance Vert Menthe */
+section.instruction {
+  border-bottom: 2px dashed var(--color-border);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+section.instruction h2 {
+  color: var(--color-accent-green);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Section Nutrition : Ambiance Violette */
+section.nutrition h2 {
+  color: var(--color-accent-purple);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Listes customisées et colorées */
+ul, ol {
+  padding-left: 1.5rem;
 }
 
 li {
-  padding-left: 1rem;
-  margin-bottom: 0.5rem; /* Réduit pour éviter un trop grand espacement vertical */
-  line-height: 1.6;
-  color: var(--color-text-muted);
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: var(--color-text-main);
 }
 
 li:last-child {
   margin-bottom: 0;
 }
 
-/* Gestion élégante des puces */
-li::marker {
-  color: var(--color-brand-primary);
+/* Couleurs des puces spécifiques à chaque section */
+section.preparation li::marker {
+  color: var(--color-accent-pink);
+  font-size: 1.2rem;
+}
+
+section.ingredient li::marker {
+  color: var(--color-accent-yellow);
+  font-size: 1.2rem;
+}
+
+section.instruction li::marker {
+  color: var(--color-accent-green);
   font-weight: bold;
 }
 
-section.preparation li::marker {
-  color: var(--color-brand-secondary);
-}
-
-/* Tableaux nutritionnels */
+/* Tableau Nutritionnel Arc-en-ciel */
 .nutrition-table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Crée un espace sympa entre les lignes */
+  margin-top: 1.5rem;
 }
 
 .nutrition-table tr {
-  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s ease;
 }
 
-.nutrition-table tr:last-child {
-  border-bottom: none;
+/* Effet de survol coloré sur les lignes du tableau */
+.nutrition-table tr:hover {
+  background-color: #f8f9fa;
 }
 
 .nutrition-table td {
-  padding: 0.75rem 2rem; /* Réduction du padding vertical excessif */
+  padding: 1rem 1.5rem;
   color: var(--color-text-muted);
-  width: 50%; /* Aligne parfaitement les deux colonnes à 50% chacune */
+  width: 50%;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+}
+
+/* Arrondir les bords de chaque ligne du tableau */
+.nutrition-table td:first-child {
+  border-radius: 12px 0 0 12px;
+  font-weight: 600;
+}
+
+.nutrition-table td:last-child {
+  border-radius: 0 12px 12px 0;
+  text-align: right; /* Aligne les chiffres proprement à droite */
 }
 
 .nutrition-table .value {
-  color: var(--color-brand-primary);
-  font-weight: 700;
+  color: var(--color-accent-purple);
+  font-weight: 800;
 }
 
 
-/* Version Mobile (Responsive) */
+/* Version Mobile Pop */
 @media screen and (max-width: 650px) {
   body {
     padding: 0;
-    align-items: flex-start; /* Évite un rendu bizarre si l'écran est très court */
   }
 
   main.card {
     border-radius: 0;
-    padding: 0 0 2.5rem 0; /* Pas de padding sur les côtés pour laisser l'image coller aux bords */
+    padding: 0 0 3rem 0;
+    box-shadow: none;
+    background: #ffffff;
   }
 
   img {
     border-radius: 0;
+    border: none;
+    box-shadow: none;
     margin-bottom: 2rem;
   }
 
-  /* Le container gère le décalage du texte uniquement sur mobile */
   .container {
-    padding: 0 1.5rem; 
+    padding: 0 1.5rem;
   }
 
   h1 {
     font-size: 2.25rem;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  section.ingredient h2,
+  section.instruction h2,
+  section.nutrition h2 {
+    font-size: 1.75rem;
   }
 
   .nutrition-table td {
-    padding: 0.75rem 1rem;
+    padding: 1rem;
   }
 }
