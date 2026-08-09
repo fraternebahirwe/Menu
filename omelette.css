@@ -1,235 +1,318 @@
-/* Palette de couleurs "Pop & Gourmande" */
+
 :root {
-  --gradient-bg: linear-gradient(135deg, #fef9e7 0%, #fbe7e9 100%);
-  
-  /* Dégradé multicolore pour l'animation de la carte */
-  --gradient-animated-card: linear-gradient(45deg, #ffffff, #fffaf0, #fff5f7, #ffffff);
-  
-  --color-accent-yellow: #ffc107; /* Jaune œuf vibrant */
-  --color-accent-pink: #ff477e;   /* Rose baie */
-  --color-accent-green: #2ec4b6;  /* Vert herbes fraîches */
-  --color-accent-purple: #7209b7; /* Violet pop */
-  
-  --color-text-main: #2b2d42;
-  --color-text-muted: #4a4e69;
-  --color-border: #f0e6df;
-  
-  --font-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: Georgia, serif;
+  --bg-gradient: linear-gradient(135deg, #fef9e7 0%, #fbe7e9 100%);
+  --card-gradient: linear-gradient(45deg, #ffffff, #fffaf0, #fff5f7, #ffffff);
+
+  --accent-yellow: #ffc107;
+  --accent-pink: #ff477e;
+  --accent-green: #2ec4b6;
+  --accent-purple: #7209b7;
+
+  --text-primary: #2b2d42;
+  --text-secondary: #4a4e69;
+  --border-color: #f0e6df;
+
+  --font-body: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: Georgia, serif;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+
+  --shadow-card:
+    0 20px 50px rgba(255, 71, 126, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+
+  --transition: 0.3s ease;
 }
 
-/* Reset global */
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--gradient-bg);
-  color: var(--color-text-main);
-  font-family: var(--font-sans);
   min-height: 100vh;
+  padding: 4rem 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4rem 1.5rem;
+
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.7;
 }
 
-/* Animation du dégradé de fond de la carte */
-@keyframes fluidGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.card {
+  width: min(100%, 740px);
+  overflow: hidden;
+
+  background: var(--card-gradient);
+  background-size: 300% 300%;
+
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+
+  animation: fluid-gradient 12s ease infinite;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
-/* Carte principale avec arrière-plan animé */
-main.card {
-  max-width: 740px;
-  width: 100%;
-  
-  /* Configuration de l'arrière-plan animé */
-  background: var(--gradient-animated-card);
-  background-size: 300% 300%; /* Agrandit le dégradé pour permettre le mouvement */
-  animation: fluidGradient 12s ease infinite; /* Alerte : tourne en boucle infinie */
-  
-  padding: 2.5rem;
-  border-radius: 30px;
-  box-shadow: 0 20px 50px rgba(255, 71, 126, 0.15), 
-              0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Effet interactif au survol de la carte */
-main.card:hover {
+.card:hover {
   transform: translateY(-5px);
   box-shadow: 0 25px 60px rgba(255, 71, 126, 0.25);
 }
 
-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 20px;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border: 4px solid #ffffff;
+.recipe-image {
+  margin: 0;
 }
 
-h1 {
-  font-family: var(--font-serif);
-  font-size: 2.75rem;
+.recipe-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  border: 4px solid #ffffff;
+  border-radius: var(--radius-md);
+
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  padding: 2.5rem;
+}
+
+.recipe-header h1 {
   margin-bottom: 1.25rem;
-  color: var(--color-accent-purple);
+
+  color: var(--accent-purple);
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 6vw, 2.75rem);
   line-height: 1.2;
 }
 
-p {
-  line-height: 1.8;
-  color: var(--color-text-muted);
+.recipe-header p,
+.nutrition > p {
   margin-bottom: 2rem;
+  color: var(--text-secondary);
   font-size: 1.05rem;
 }
 
-/* Section Préparation : Rose */
-section.preparation {
-  background: linear-gradient(135deg, #fff0f5 0%, #ffe3ec 100%);
-  padding: 2rem;
-  border-radius: 20px;
+section {
   margin-bottom: 2.5rem;
-  border-left: 6px solid var(--color-accent-pink);
 }
 
-section.preparation h3 {
-  color: var(--color-accent-pink);
-  margin-bottom: 1rem;
+section h2 {
+  margin-bottom: 1.25rem;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.preparation {
+  padding: 2rem;
+
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe3ec 100%);
+
+  border-left: 6px solid var(--accent-pink);
+  border-radius: var(--radius-md);
+}
+
+.preparation h2 {
+  color: var(--accent-pink);
   font-size: 1.4rem;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-/* Section Ingrédients : Jaune */
-section.ingredient {
-  border-bottom: 2px dashed var(--color-border);
+.ingredient {
   padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  border-bottom: 2px dashed var(--border-color);
 }
 
-section.ingredient h2 {
+.ingredient h2 {
   color: #e69500;
-  font-size: 2rem;
-  margin-bottom: 1.25rem;
 }
 
-/* Section Instructions : Vert */
-section.instruction {
-  border-bottom: 2px dashed var(--color-border);
+.instruction {
   padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  border-bottom: 2px dashed var(--border-color);
 }
 
-section.instruction h2 {
-  color: var(--color-accent-green);
-  font-size: 2rem;
-  margin-bottom: 1.25rem;
+.instruction h2 {
+  color: var(--accent-green);
 }
 
-/* Section Nutrition : Violet */
-section.nutrition h2 {
-  color: var(--color-accent-purple);
-  font-size: 2rem;
-  margin-bottom: 1.25rem;
+.nutrition h2 {
+  color: var(--accent-purple);
 }
 
-/* Listes customisées */
-ul, ol {
+ul,
+ol {
   padding-left: 1.5rem;
 }
 
 li {
   padding-left: 0.75rem;
   margin-bottom: 0.75rem;
+  color: var(--text-primary);
   line-height: 1.7;
-  color: var(--color-text-main);
 }
 
 li:last-child {
   margin-bottom: 0;
 }
 
-section.preparation li::marker {
-  color: var(--color-accent-pink);
+.preparation li::marker {
+  color: var(--accent-pink);
   font-size: 1.2rem;
 }
 
-section.ingredient li::marker {
-  color: var(--color-accent-yellow);
+.ingredient li::marker {
+  color: var(--accent-yellow);
   font-size: 1.2rem;
 }
 
-section.instruction li::marker {
-  color: var(--color-accent-green);
-  font-weight: bold;
+.instruction li::marker {
+  color: var(--accent-green);
+  font-weight: 700;
 }
 
-/* Tableau Nutritionnel */
 .nutrition-table {
   width: 100%;
+  margin-top: 1.5rem;
+
   border-collapse: separate;
   border-spacing: 0 8px;
-  margin-top: 1.5rem;
 }
 
-.nutrition-table tr:hover td {
-  background-color: #fff9fa; /* Teinte légèrement rosée au survol */
+.nutrition-table tr {
+  transition: transform 0.2s ease;
+}
+
+.nutrition-table tr:hover {
+  transform: translateX(4px);
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  width: 50%;
+  padding: 1rem 1.5rem;
+
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+
+  color: var(--text-secondary);
+}
+
+.nutrition-table th {
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  font-weight: 600;
+  text-align: left;
 }
 
 .nutrition-table td {
-  padding: 1rem 1.5rem;
-  color: var(--color-text-muted);
-  width: 50%;
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  transition: background-color 0.2s ease;
-}
-
-.nutrition-table td:first-child {
-  border-radius: 12px 0 0 12px;
-  font-weight: 600;
-}
-
-.nutrition-table td:last-child {
-  border-radius: 0 12px 12px 0;
+  border-left: 0;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   text-align: right;
 }
 
 .nutrition-table .value {
-  color: var(--color-accent-purple);
+  color: var(--accent-purple);
   font-weight: 800;
 }
 
-/* Version Mobile */
-@media screen and (max-width: 650px) {
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes fluid-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card {
+    animation: none;
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .nutrition-table tr {
+    transition: none;
+  }
+}
+
+@media (max-width: 650px) {
   body {
+    display: block;
     padding: 0;
   }
 
-  main.card {
+  .card {
+    min-height: 100vh;
     border-radius: 0;
-    padding: 0 0 3rem 0;
     box-shadow: none;
-    /* Conserve l'animation même sur mobile pour le fun */
-    background-size: 200% 200%; 
   }
 
-  img {
-    border-radius: 0;
-    border: none;
+  .card:hover {
+    transform: none;
     box-shadow: none;
-    margin-bottom: 2rem;
+  }
+
+  .recipe-image img {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .container {
-    padding: 0 1.5rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .recipe-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .preparation {
+    padding: 1.5rem;
+  }
+
+  .nutrition-table th,
+  .nutrition-table td {
+    padding: 0.9rem 1rem;
   }
 }
+
